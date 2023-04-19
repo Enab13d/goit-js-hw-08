@@ -17,7 +17,7 @@ const onInput = () => {
   }
   localStorage.setItem('feedback-form-state', stringifiedObj);
 };
-onSubmit = e => {
+const onSubmit = e => {
   e.preventDefault();
   console.log(obj);
   e.currentTarget.reset();
