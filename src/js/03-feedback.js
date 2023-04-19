@@ -1,8 +1,8 @@
 import throttle from 'lodash.throttle';
 const formEl = document.querySelector('.feedback-form');
-const submitBtn = document.querySelector('button[type=submit]');
 let obj;
 let parsedObj;
+let stringifiedObj;
 const {
   elements: { email, message },
 } = formEl;
@@ -11,9 +11,8 @@ const onInput = () => {
   console.log(obj);
   try {
     stringifiedObj = JSON.stringify(obj);
-    console.log();
   } catch (error) {
-    error.name;
+    console.log(error.message);
   }
   localStorage.setItem('feedback-form-state', stringifiedObj);
 };
