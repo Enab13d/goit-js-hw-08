@@ -2,7 +2,6 @@ import throttle from 'lodash.throttle';
 const formEl = document.querySelector('.feedback-form');
 let obj;
 let parsedObj;
-let stringifiedObj;
 const {
   elements: { email, message },
 } = formEl;
@@ -10,11 +9,10 @@ const onInput = () => {
   obj = { email: email.value, message: message.value };
   console.log(obj);
   try {
-    stringifiedObj = JSON.stringify(obj);
+    localStorage.setItem('feedback-form-state', JSON.stringify(obj));
   } catch (error) {
     console.log(error.message);
   }
-  localStorage.setItem('feedback-form-state', stringifiedObj);
 };
 const onSubmit = e => {
   e.preventDefault();
