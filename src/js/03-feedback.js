@@ -29,7 +29,7 @@ const checkLocalStorage = () => {
       message.value = parsedObj.message;
       return;
     } catch (error) {
-      error.name;
+      console.log(error.message);
     }
   }
 };
