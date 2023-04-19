@@ -34,7 +34,6 @@ const checkLocalStorage = () => {
     }
   }
 };
-
 formEl.addEventListener('submit', onSubmit);
 formEl.addEventListener('input', throttle(onInput, 500));
 checkLocalStorage();
