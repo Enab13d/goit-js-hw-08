@@ -12,5 +12,4 @@ player.getCurrentTime().then(function(seconds) {
 });
 }, 1000);
 player.on('timeupdate', onPlay);
-const savedTime = Number(localStorage.getItem("videoplayer-current-time"));
-player.setCurrentTime(savedTime);
+player.setCurrentTime(localStorage.getItem("videoplayer-current-time") || null);

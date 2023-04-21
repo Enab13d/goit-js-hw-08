@@ -1,13 +1,12 @@
 import throttle from 'lodash.throttle';
 const formEl = document.querySelector('.feedback-form');
-let obj;
 let parsedObj;
 const {
   elements: { email, message },
 } = formEl;
+
 const onInput = () => {
-  obj = { email: email.value, message: message.value };
-  console.log(obj);
+  checkInput();
   try {
     localStorage.setItem('feedback-form-state', JSON.stringify(obj));
   } catch (error) {
@@ -16,8 +15,13 @@ const onInput = () => {
 };
 const onSubmit = e => {
   e.preventDefault();
+  if (email.value === "" || message.value === "") {
+    return alert('All fields should be fulfilled');
+  } else {
+  checkInput();
   console.log(obj);
   e.currentTarget.reset();
+  }
 };
 const checkLocalStorage = () => {
   if (localStorage) {
@@ -31,6 +35,12 @@ const checkLocalStorage = () => {
     }
   }
 };
+
 formEl.addEventListener('submit', onSubmit);
 formEl.addEventListener('input', throttle(onInput, 500));
 checkLocalStorage();
+function checkInput () {
+  if (email.value !== "" && message.value !== "") {
+   return obj = { email: email.value, message: message.value };
+  }
+ };
