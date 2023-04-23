@@ -4,6 +4,12 @@ let parsedObj;
 const {
   elements: { email, message },
 } = formEl;
+let obj;
+function checkInput() {
+  if (email.value !== '' && message.value !== '') {
+    return obj = { email: email.value, message: message.value };
+  }
+}
 
 const onInput = () => {
   checkInput();
@@ -15,12 +21,12 @@ const onInput = () => {
 };
 const onSubmit = e => {
   e.preventDefault();
-  if (email.value === "" || message.value === "") {
+  if (email.value === '' || message.value === '') {
     return alert('All fields should be fulfilled');
   } else {
-  checkInput();
-  console.log(obj);
-  e.currentTarget.reset();
+    checkInput();
+    console.log(obj);
+    e.currentTarget.reset();
   }
 };
 const checkLocalStorage = () => {
@@ -39,8 +45,3 @@ const checkLocalStorage = () => {
 formEl.addEventListener('submit', onSubmit);
 formEl.addEventListener('input', throttle(onInput, 500));
 checkLocalStorage();
-function checkInput () {
-  if (email.value !== "" && message.value !== "") {
-   return obj = { email: email.value, message: message.value };
-  }
- };
