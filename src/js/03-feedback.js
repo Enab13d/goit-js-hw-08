@@ -4,15 +4,11 @@ let parsedObj;
 const {
   elements: { email, message },
 } = formEl;
-let obj;
-function checkInput() {
-  if (email.value !== '' && message.value !== '') {
-    return obj = { email: email.value, message: message.value };
-  }
-}
+let obj = {};
 
 const onInput = () => {
-  checkInput();
+  obj.email = email.value;
+  obj.message = message.value;
   try {
     localStorage.setItem('feedback-form-state', JSON.stringify(obj));
   } catch (error) {
@@ -24,7 +20,6 @@ const onSubmit = e => {
   if (email.value === '' || message.value === '') {
     return alert('All fields should be fulfilled');
   } else {
-    checkInput();
     console.log(obj);
     e.currentTarget.reset();
     localStorage.clear();
