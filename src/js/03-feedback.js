@@ -20,11 +20,15 @@ const onSubmit = e => {
   if (email.value === '' || message.value === '') {
     return alert('All fields should be fulfilled');
   } else {
-    console.log(obj);
+    try {
+    console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
     e.currentTarget.reset();
     localStorage.clear();
     obj = {};
+  } catch (error) {
+    console.log(error.message);
   }
+}
 };
 const checkLocalStorage = () => {
   if (localStorage) {
