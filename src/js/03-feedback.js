@@ -27,6 +27,8 @@ const onSubmit = e => {
     checkInput();
     console.log(obj);
     e.currentTarget.reset();
+    localStorage.clear();
+    obj = {};
   }
 };
 const checkLocalStorage = () => {
